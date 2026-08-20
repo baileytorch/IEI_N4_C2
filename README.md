@@ -13,7 +13,7 @@ Clases de Backend con Django
             <li>Ejecutamos el comando: <code>python -m venv nombre_ambiente</code></li>
             <li>Esto crea toda la estructura de directorios necesario para nuestro proyecto y lo mantiene aislado de cualquier otro proyecto.</li>
         </ol>
-    <li>Activación de Ebtorno Virtual</li>
+    <li>Activación de Entorno Virtual</li>
         <ol>
             <li>Mediante el terminal, nos ubicamos dentro del directorio del ambiente virtual</li>
         </ol>

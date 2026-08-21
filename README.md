@@ -1,7 +1,6 @@
 # IEI_N4_C2
 Clases de Backend con Django
 
-<<<<<<< HEAD
 ## Creación Proyectos con Django
 
 1. **Creación de repositorio en "https://github.com".**
@@ -26,6 +25,10 @@ Clases de Backend con Django
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
     ```
     - Después de este comando, deberíamos poder ejecutar la activación del ambiente.
+    - Cuando hayamos terminado de trabajar o necesitamos desactivar el ambiente, ejecutaremos en terminal el comando:
+    ```
+    deactivate
+    ```
 
 3. **Actualización PIP**
     - Al haber creado un nuevo proyecto, nop tenemos la seguridad de tener PIP en la última versión, por lo que lo actualizaremos.
@@ -41,22 +44,12 @@ Clases de Backend con Django
     ```
     pip install django
     ```
-=======
-<H3>Creación Proyectos con Django</H3>
-<hr>
-<ol>
-    <li>Creación de repositorio en <a href="https://github.com">GITHUB</a>.</li>
-    <li>Vinculamos el repositorio con nuestro editor de código, idealmente VSCode.</li>
-    <li>Creación de Entorno (ambiente) Virtual</li>
-        <ol>
-            <li>Nos situamos en el directorio principal de nuestra aplicación.</li>
-            <li>Ubicados en este directorio, abrimos un terminal.</li>
-            <li>Ejecutamos el comando: <code>python -m venv nombre_ambiente</code></li>
-            <li>Esto crea toda la estructura de directorios necesario para nuestro proyecto y lo mantiene aislado de cualquier otro proyecto.</li>
-        </ol>
-    <li>Activación de Entorno Virtual</li>
-        <ol>
-            <li>Mediante el terminal, nos ubicamos dentro del directorio del ambiente virtual</li>
-        </ol>
-</ol>
->>>>>>> edc18c5b2cefaa80ce54164156134ab6a1fe47c8
+
+5. **Creamos Nuestro Proyecto Django**
+
+    - Crearemos la estructura de directorios de Django.
+    - Mediante terminal, nos ubicamos en la carpeta raíz de nuestro proyecto.
+    - Estando en esta ubicación, ejecutaremos el siguiente comando en el terminal:
+    ```
+    django-admin startproject proyecto_django .
+    ```

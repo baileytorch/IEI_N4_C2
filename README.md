@@ -62,4 +62,10 @@ Clases de Backend con Django
     ```
     django-admin startapp nombre_aplicacion
     ```
-    - nombre_aplicacion debe ser reemplazado por el nombre que Ud. le dará a SU aplicaión.
+    - nombre_aplicacion debe ser reemplazado por el nombre que Ud. le dará a SU aplicación.
+
+**Iniciando el Servidor**
+    - Con todo instalado, ya podemos iniciar la aplicación, para hacerlo, ejecutamos desde el terminal el comando:
+    ```
+    python manage.py runserver
+    ```

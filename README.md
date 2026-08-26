@@ -53,3 +53,13 @@ Clases de Backend con Django
     ```
     django-admin startproject proyecto_django .
     ```
+    - proyecto_django debe ser reeemplazado por el nombre que Ud. le dará al "motor" django, idealmente debe ser un nombre corto y descriptivo, porque lo vamos a llamar varias veces.
+    - El PUNTO al final de la instrucción, la indica que debe crear el directorio en la carpeta raíz de nuestro proyecto.
+
+6. **Creación de la Aplicación Particular**
+    - Hemos llegado al punto donde construiremos nuestra aplicación, para lograrlo debemos ubicrnos mediante terminal en la carpeta raíz del proyecto.
+    - Ejecutamos el siguiente comando mediante el terminal:
+    ```
+    django-admin startapp nombre_aplicacion
+    ```
+    - nombre_aplicacion debe ser reemplazado por el nombre que Ud. le dará a SU aplicaión.

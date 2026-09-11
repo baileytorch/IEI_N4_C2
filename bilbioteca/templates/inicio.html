@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    <title>Biblioteca Digital</title>
+{% endblock %}
+
+{% block contenido %}
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Descubre tu próxima
+                <span>gran lectura</span>
+            </h1>
+
+            <p>
+                Explora nuestra colección de libros, descubre nuevos autores
+                y encuentra historias que te acompañarán en cada página.
+            </p>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Buscar por título, autor o categoría..."
+                >
+
+                <button>
+                    Buscar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-illustration">
+            📖
+        </div>
+
+    </section>
+
+
+    <!-- QUICK ACCESS -->
+
+    <section class="quick-access">
+
+        <div class="section-title">
+
+            <h2>Explora nuestra biblioteca</h2>
+
+            <p>
+                Encuentra rápidamente lo que estás buscando
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+                <h3>Catálogo</h3>
+
+                <p>
+                    Explora todos los libros disponibles
+                    en nuestra biblioteca.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ✍️
+                </div>
+
+                <h3>Autores</h3>
+
+                <p>
+                    Conoce a los autores y descubre
+                    sus principales obras.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔎
+                </div>
+
+                <h3>Buscar libros</h3>
+
+                <p>
+                    Encuentra rápidamente un libro
+                    utilizando nuestro buscador.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+{% endblock %}

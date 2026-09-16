@@ -169,7 +169,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Nuestras clases se crearán heredando desde *models* de Django, para poder acceder a los ditintos tipos de datos que deberá tener como atributos.
     - Estructura de creación de una clase:
     ```
-    class MiClase(models.Model):
+    class MiModelo(models.Model):
         atributo_1 = models.CharField(max_length=25,null=false)
         atributo_2 = models.TextField(max_length=100,null=false)
         atributo_3 = models.DateField(null=false)
@@ -184,8 +184,8 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         created_at = models.DateTimeField(default=ahora)
         updated_at = models.DateTimeField(auto_now=True)
 
-    class MiClase2(models.Model):
-        atributo_referenciado = models.ForeignKey(MiClase,on_delete=CASCADE)
+    class MiModelo2(models.Model):
+        atributo_referenciado = models.ForeignKey(MiModelo,on_delete=CASCADE)
         atributo_2 = models.CharField(max_length=100)
         created_at = models.DateTimeField(default=ahora)
         updated_at = models.DateTimeField(auto_now=True)
@@ -202,3 +202,28 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ```
 
     >Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
+
+9.  **Datos Iniciales de Aplicación**
+    - Para contar con un set de datos iniciales en nuestra aplicación, primero debemos crear un directorio *fixtures* dentro de nuestra aplicación.
+    - Una vez que hemos creado el directorio, crearemos archivos con la data inicial en formato *JSON*, *XML* o *YAML* con su extensión correspondiente.
+    - Para insertar esa data en la base de datos, ejecutaremos el siguiente comando mediante terminal:
+    ```
+    python manage.py loaddata mi_archivo.extension
+    ```
+    
+    - Si lo que se desea es respaldar todos los datos desde la base de datos en un archivo, ejecutaremos el siguiente comando mediante terminal:
+    ```
+    python manage.py dumpdata > mi_base_datos.json
+    ```
+
+    - Si se necesita respaldar todos los datos de nombre_aplicacion, se hará ejecutando el siguiente comando mediante terminal:
+    ```
+    python manage.py dumpdata nombre_aplicacion > nombre_aplicacion_data.json
+    ```
+
+    - Si se necesita respaldar los datos de un modelo particular, se hará ejecutando el siguiente comando mediante terminal:
+    ```
+    python manage.py dumpdata nombre_aplicacion.MiModelo > MiModelo_data.json
+    ```
+
+    

@@ -226,4 +226,18 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     python manage.py dumpdata nombre_aplicacion.MiModelo > MiModelo_data.json
     ```
 
-    
+10. Manejo de Base de Datos
+    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos de la siguiente forma:
+
+    * Crear usuario local 'Usuario' con contraseña 'mypassword'
+    ```
+    CREATE USER 'Usuario'@'localhost' IDENTIFIED BY 'mypassword';
+    ```
+    * Conceder privilegios para una base de datos específica al usuario 'Usuario' local (por ejemplo, 'mydatabase')
+    ```
+    GRANT ALL PRIVILEGES ON mydatabase.* TO 'Usuario'@'localhost';
+    ```
+    * Aplicar los cambios de privilegios (permisos)
+    ``
+    FLUSH PRIVILEGES;`
+    ```

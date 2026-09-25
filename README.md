@@ -226,18 +226,49 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     python manage.py dumpdata nombre_aplicacion.MiModelo > MiModelo_data.json
     ```
 
-10. Manejo de Base de Datos
-    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos de la siguiente forma:
+10. **Manejo de Base de Datos**
+    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando los siguientes comandos en el motor de base de datos:
 
-    * Crear usuario local 'Usuario' con contraseña 'mypassword'
+    * Crear una base de datos:
     ```
-    CREATE USER 'Usuario'@'localhost' IDENTIFIED BY 'mypassword';
+    CREATE DATABASE mi_base_datos;
     ```
-    * Conceder privilegios para una base de datos específica al usuario 'Usuario' local (por ejemplo, 'mydatabase')
+    * Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
     ```
-    GRANT ALL PRIVILEGES ON mydatabase.* TO 'Usuario'@'localhost';
+    CREATE USER 'Usuario'@'%' IDENTIFIED BY 'mi_contraseña';
+    ```
+    * Conceder privilegios para nuestra base de datos al usuario remoto 'Usuario' (por ejemplo, 'mi_base_datos')
+    ```
+    GRANT ALL PRIVILEGES ON mi_base_datos.* TO 'Usuario'@'%';
     ```
     * Aplicar los cambios de privilegios (permisos)
     ``
     FLUSH PRIVILEGES;`
     ```
+
+     ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y los registros (por el lado de la base de datos). 
+
+    | Código |          | Base de datos |
+    | -------- | -------- | -------- |
+    | Clase | <------> | Entidad |
+    | objeto | <------> | registro |
+
+    - Usaremos SqlAlchemy, el que se instalará mediante la ejecución del siguiente comando en el terminal:
+    ```
+    pip install SQLAlchemy mysqlclient
+    ```
+
+11. **Manejo de Info sensible**
+
+___   
+> Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
+```
+pip freeze > requirements.txt
+```
+
+> Este archivo tendrá una lista de todas las librerías incluídas en nuestro *VENV*, la que podrá ser instalada en cualquier nuevo *VENV* ejecutando el siguiente comando:
+```
+pip install -r requirements.txt
+```
+
+> Cada vez que agreguemos una nueva librería actualizaremos el archivo de requerimientos con el comando *FREEZE*.

@@ -301,6 +301,14 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     admin.site.register(MiClase2)
     ```
 
+    Existe un SuperUsuario que tiene todos los permisos de Django para trabajar con nuestro modelo de datos. Para crearlo, ejecutaremos el siguiente comando mediante terminal:
+    ```
+    python manage.py createsuperuser
+    ```
+
+    Este comando nos irá pidiendo los datos del usuario medainte terminal.
+    Una vez que se haya creado, podemos revisarlo en la tabla *auth_user* de Django.
+
 ___   
 > Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
 ```

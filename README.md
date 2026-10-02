@@ -300,7 +300,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Primero crearemos un archivo *serializer.py* en el directorio de nuestra aplicación.
     - En el archivo creado, importaremos *serializers* para usarlos en la serialización de nuestro modelo.
     - Junto con esto, debemos importar todo nuestro modelo de datos desde *models.py*.
-    - Finalmente, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
+    - Luego, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
 
     El archivo debierea quedar como el siguiente ejemplo:
     ```
@@ -320,6 +320,27 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
             model = MiClase2
             fileds = ('atributo_referenciado','atributo_2')
             # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
+    ```
+
+    - Una vez que hemos definido los serializadores de nuestro modelo de datos, debemos crear el conjunto de vistas o *ViewSet*, con las que procesaremos los datos en el *frontend*.
+    - Para crear el conjunto de vistas, debemos modificar el archivo *views.py* y crear dentro de este los *ViewSet* para cada uno de nuestros objetos del modelo de datos.
+    ```
+    from django.shortcuts import render
+    from rest_framework import viewsets
+
+    from .models import MiClase
+    from .models import MiClase2
+
+    from .serializer import MiClaseSerializer
+    from .serializer import MiClase2Serializer
+
+    class MiClaseViewSet(viewsets.ModelViewSet):
+        queryset = MiClase.objects.all()
+        serializer_class = MiClaseSerializer
+
+    class MiClase2ViewSet(viewsets.ModelViewSet):
+        queryset = MiClase2.objects.all()
+        serializer_class = MiClase2Serializer
     ```
 
 14. **Crear un Usuario Admin de Django**

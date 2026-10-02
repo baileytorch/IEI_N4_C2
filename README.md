@@ -169,7 +169,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Nuestras clases se crearán heredando desde *models* de Django, para poder acceder a los ditintos tipos de datos que deberá tener como atributos.
     - Estructura de creación de una clase:
     ```
-    class MiModelo(models.Model):
+    class MiClase(models.Model):
         atributo_1 = models.CharField(max_length=25,null=false)
         atributo_2 = models.TextField(max_length=100,null=false)
         atributo_3 = models.DateField(null=false)
@@ -184,8 +184,8 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         created_at = models.DateTimeField(default=ahora)
         updated_at = models.DateTimeField(auto_now=True)
 
-    class MiModelo2(models.Model):
-        atributo_referenciado = models.ForeignKey(MiModelo,on_delete=CASCADE)
+    class MiClase2(models.Model):
+        atributo_referenciado = models.ForeignKey(MiClase,on_delete=CASCADE)
         atributo_2 = models.CharField(max_length=100)
         created_at = models.DateTimeField(default=ahora)
         updated_at = models.DateTimeField(auto_now=True)
@@ -203,62 +203,38 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     >Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
 
-9.  **Datos Iniciales de Aplicación**
-    - Para contar con un set de datos iniciales en nuestra aplicación, primero debemos crear un directorio *fixtures* dentro de nuestra aplicación.
-    - Una vez que hemos creado el directorio, crearemos archivos con la data inicial en formato *JSON*, *XML* o *YAML* con su extensión correspondiente.
-    - Para insertar esa data en la base de datos, ejecutaremos el siguiente comando mediante terminal:
-    ```
-    python manage.py loaddata mi_archivo.extension
-    ```
-    
-    - Si lo que se desea es respaldar todos los datos desde la base de datos en un archivo, ejecutaremos el siguiente comando mediante terminal:
-    ```
-    python manage.py dumpdata > mi_base_datos.json
-    ```
+9. **Manejo de Base de Datos**
 
-    - Si se necesita respaldar todos los datos de nombre_aplicacion, se hará ejecutando el siguiente comando mediante terminal:
-    ```
-    python manage.py dumpdata nombre_aplicacion > nombre_aplicacion_data.json
-    ```
+    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:
 
-    - Si se necesita respaldar los datos de un modelo particular, se hará ejecutando el siguiente comando mediante terminal:
-    ```
-    python manage.py dumpdata nombre_aplicacion.MiModelo > MiModelo_data.json
-    ```
-
-10. **Manejo de Base de Datos**
-    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando los siguientes comandos en el motor de base de datos:
-
-    * Crear una base de datos:
-    ```
-    CREATE DATABASE mi_base_datos;
-    ```
-    * Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
+    - Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
     ```
     CREATE USER 'Usuario'@'%' IDENTIFIED BY 'mi_contraseña';
     ```
-    * Conceder privilegios para nuestra base de datos al usuario remoto 'Usuario' (por ejemplo, 'mi_base_datos')
+
+    - Conceder privilegios para una base de datos específica al usuario remoto 'Usuario' (por ejemplo, 'mi_base_datos')
     ```
     GRANT ALL PRIVILEGES ON mi_base_datos.* TO 'Usuario'@'%';
     ```
-    * Aplicar los cambios de privilegios (permisos)
-    ``
-    FLUSH PRIVILEGES;`
+
+    - Aplicar los cambios de privilegios (permisos)
+    ```
+    FLUSH PRIVILEGES;
     ```
 
-     ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y los registros (por el lado de la base de datos). 
+    - ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y las entidades (por el lado de la base de datos). 
 
     | Código |          | Base de datos |
     | -------- | -------- | -------- |
     | Clase | <------> | Entidad |
     | objeto | <------> | registro |
 
-    - Usaremos SqlAlchemy, el que se instalará mediante la ejecución del siguiente comando en el terminal:
+    - Usaremos *SqlAlchemy* como *ORM*, junto con el driver de base de datos *mysqlclient*, los que se instalarán mediante la ejecución del siguiente comando en el terminal:
     ```
     pip install SQLAlchemy mysqlclient
     ```
 
-11. **Desacoplar Datos Sensibles**
+10. **Desacoplar Datos Sensibles**
 
     Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la *'SECRET_KEY'* de Django, por lo que debemos *DESACOPLAR* esos datos y ponerlos en un archivo de ambiente.
 
@@ -267,14 +243,14 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     pip install python-decouple
     ```
 
-    - Creamos un archivo *.env* (archivo de ambiente) en el directorio principal de la aplicación o donde se encuentre su archivo *manage.py*.
+    - Creamos un archivo *.env* (archivo de ambiente, env de environment) en el directorio principal de la aplicación o donde se encuentre su archivo *manage.py*.
 
     - En el archivo *.env* ponemos los datos sensibles en variables que tendrán como valor el dato. Es importante no dejar espacios entre el nombre de la variable y la asignación del valor:
     ```
     SECRET_KEY='cadena_de_caracteres_django_secret_key'
     ```
 
-    - Donde necesitemos usar ese dato, generalmente en *setting.py*, importaremos el método *config* de la librería *decouple* para acceder a los datos almacenados en el arhvo de ambiente, de la siguiente forma:
+    - Donde necesitemos usar ese dato, generalmente en *setting.py*, importaremos el método *config* de la librería *decouple* para acceder a los datos almacenados en el archivo de ambiente, de la siguiente forma:
     *settings.py*
     ```
     from decouple import config
@@ -286,9 +262,26 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
+11. **Instalación Django Rest Framework**
+
+    Django Rest Framework es una librería que contiene muchas herramientas que usaremos en nuestro desarrollo django, como los serializadores.
+    Para instalarlo ejecutaremos el siguiente comando mediante terminal:
+    ```
+    pip install djangorestframework
+    ```
+
+    Una vez que se ha instalado, debemos agregarlo a la lista de *INSTALLED_APPS* en *settings.py* de nuestro motor Django.
+    ```
+    INSTALLED_APPS = [
+        ...
+        'rest_framework',
+        ...
+    ]
+    ```
+    
 12. **Incorporar Modelo de Datos al administrador de Django**
 
-    En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos y generar toda la estructura de *vistas* que nos permitan hacer este trabajo.
+    En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos.
     Esto lo lograremos de la siguiente forma:
     *admin.py*
     ```
@@ -301,13 +294,44 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     admin.site.register(MiClase2)
     ```
 
-    Existe un SuperUsuario que tiene todos los permisos de Django para trabajar con nuestro modelo de datos. Para crearlo, ejecutaremos el siguiente comando mediante terminal:
+13. **Creación de Serializadores**
+
+    La librería *rest_framework* que instalamos anteriormente, tiene la herramienta para serializar nuestro modelo de datos en formato *JSON*, lo que lograremos siguiendo estos pasos:
+    - Primero crearemos un archivo *serializer.py* en el directorio de nuestra aplicación.
+    - En el archivo creado, importaremos *serializers* para usarlos en la serialización de nuestro modelo.
+    - Junto con esto, debemos importar todo nuestro modelo de datos desde *models.py*.
+    - Finalmente, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
+
+    El archivo debierea quedar como el siguiente ejemplo:
+    ```
+    from rest_framework import serializers
+
+    from .models import MiClase
+    from .models import MiClase2
+
+    class MiClaseSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = MiClase
+            fileds = ('__all__')
+            # __all__ serializa todas los atributos de la clase/modelo
+
+    class MiClase2Serializer(serializers.ModelSerializer):
+        class Meta:
+            model = MiClase2
+            fileds = ('atributo_referenciado','atributo_2')
+            # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
+    ```
+
+14. **Crear un Usuario Admin de Django**
+
+    El usuario *ADMIN* de Django es el que tendrá control de la aplicación y de las vistas *CRUD* de nuestro modelo de datos.
+    Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
     ```
     python manage.py createsuperuser
     ```
 
-    Este comando nos irá pidiendo los datos del usuario medainte terminal.
-    Una vez que se haya creado, podemos revisarlo en la tabla *auth_user* de Django.
+    Una vez que jecutamos el comando, este nos pedirá la información del usuario mediante el mismo terminal.
+
 
 ___   
 > Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:

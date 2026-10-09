@@ -8,13 +8,14 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 ## Creación de Proyectos con Django
 
 1. **Creación de Ambiente Virtual**
-    - Un ambiente virtual mantendrá aislada toda la configuración de nuestro proyecto y su entorno de trabajo.
-    - Habiendo creado nuestro repositorio, abrimos la carpeta contenedora en VS Code.</li>
-    - Iniciamos un nuevo terminal, estando ubicados en el directorio principal.</li>
+    - El primer paso será crear un repositorio en Github, donde dejaremos almacenado el código de nuestro proyecto y lo clonaremos en nuestra máquina local. Recuerde la importancia de crearlo con un archivo README.md y un archivo .gitignore generado con el repo para que desde el incio tenga una lista de los archivos que NO deben subirse al repositorio.
+    - Habiendo creado y clonado nuestro repositorio, abrimos la carpeta contenedora en VS Code.
+    - Dentro de este directorio, crearemos un ambiente virtual que mantendrá aislada toda la configuración de nuestro proyecto y su entorno de trabajo.
+    - Para lograrlo, iniciaremos un nuevo terminal, estando ubicados en el directorio principal.
     - Para crear el ambiente virtual, ejecutamos el siguiente comando en el terminal:
-    ```
-    python -m venv nombre_ambiente
-    ```
+        ```
+        python -m venv nombre_ambiente
+        ```
 
     - *VENV* es acrónimo de *VIRTUAL ENVIRONMENT*, por lo que debemos entender que creará nuestro ambiente virtual.
     - *nombre_ambiente* debe ser reemplazado por el nombre que Ud. le quiera dar a su ambiente virtual. Es recomendable que sea corto y descriptivo.
@@ -234,7 +235,36 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     pip install SQLAlchemy mysqlclient
     ```
 
-10. **Desacoplar Datos Sensibles**
+10. **Datos Iniciales de la Aplicación**
+
+    Al estar definida nuestra base de datos y aplicadas las migraciones de nuestro modelo de datos, tenemos la estructura de datos requerida para alojar nuestros registros.
+    En este punto será importante contra con datos genéricos iniciales de la aplicación, como listas o parámetros que deben estar pre-cargados.
+    Esto lo lograremos de la siguiente forma:
+    - Dentro del directorio de nuestra aplicación crearemos un nuevo directorio *fixtures* que es donde guardaremos los archivos con datos en formato *JSON* para que sean cargados en la DB.
+    - Para cada dato requerido generaremos un archivo *.json* que contendrá los datos necesarios.
+    - La estructura de este archivo dependerá de nuestro modelo, pero siguiendo el siguiente patrón:
+    ```
+    [
+        {
+            "model": "nombre_aplicacion.nombre_modelo",
+            "pk": 1,
+            "fields": {
+                "atributo_1": "01",
+                "atributo_2": "Atributo 1"
+            }
+        },
+        {
+            "model": "nombre_aplicacion.nombre_modelo",
+            "pk": 2,
+            "fields": {
+                "atributo_1": "02",
+                "atributo_2": "Atributo 2"
+            }
+        }
+    ]
+    ```
+
+11. **Desacoplar Datos Sensibles**
 
     Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la *'SECRET_KEY'* de Django, por lo que debemos *DESACOPLAR* esos datos y ponerlos en un archivo de ambiente.
 
@@ -262,7 +292,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
-11. **Instalación Django Rest Framework**
+12. **Instalación Django Rest Framework**
 
     Django Rest Framework es una librería que contiene muchas herramientas que usaremos en nuestro desarrollo django, como los serializadores.
     Para instalarlo ejecutaremos el siguiente comando mediante terminal:
@@ -279,7 +309,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ]
     ```
     
-12. **Incorporar Modelo de Datos al administrador de Django**
+13. **Incorporar Modelo de Datos al administrador de Django**
 
     En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos.
     Esto lo lograremos de la siguiente forma:
@@ -294,15 +324,15 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     admin.site.register(MiClase2)
     ```
 
-13. **Creación de Serializadores**
+14. **Creación de Serializadores**
 
     La librería *rest_framework* que instalamos anteriormente, tiene la herramienta para serializar nuestro modelo de datos en formato *JSON*, lo que lograremos siguiendo estos pasos:
     - Primero crearemos un archivo *serializer.py* en el directorio de nuestra aplicación.
     - En el archivo creado, importaremos *serializers* para usarlos en la serialización de nuestro modelo.
     - Junto con esto, debemos importar todo nuestro modelo de datos desde *models.py*.
-    - Luego, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
+    - Finalmente, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
 
-    El archivo debierea quedar como el siguiente ejemplo:
+    El archivo debiera quedar como el siguiente ejemplo:
     ```
     from rest_framework import serializers
 
@@ -322,28 +352,71 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
             # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
     ```
 
-    - Una vez que hemos definido los serializadores de nuestro modelo de datos, debemos crear el conjunto de vistas o *ViewSet*, con las que procesaremos los datos en el *frontend*.
-    - Para crear el conjunto de vistas, debemos modificar el archivo *views.py* y crear dentro de este los *ViewSet* para cada uno de nuestros objetos del modelo de datos.
+15. **Creación de Vistas CBV**
+
+    CBV es el acrónimo de Class Based View o *Vista Basada en Clase*, es una colección de vistas basadas en un modelo de datos y que nos permiten hacer *CRUD* de los datos de ese modelo con los métodos correspondientes *GET*, *POST*, *PUT/PATCH* y *DELETE*.
+    Las vistas basadas en clase se crearán dentro de *mi_aplicacion/views.py*, nuestro archivo controlador, siguiendo las siguientes instrucciones:
+    - Importamos todos nuestros modelos de datos al archivo *views.py*.
+    - Junto con la importación de las clases, importamos nuestros serializadores, puesto que se ancargarán de dejar los datos en un formato que podamos usar en las vistas.
+    - con todo esto ya podemos crear nuestro *ViewSet*, o colección de vistas para trabajar con los datos del modelo.
+
+    El archivo debería quedar de la siguiente forma:
     ```
-    from django.shortcuts import render
-    from rest_framework import viewsets
+    from rest_framework import serializers
+    from .models import MiClase, MiClase2
 
-    from .models import MiClase
-    from .models import MiClase2
+    class MiClaseSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = MiClase
+            fields = ('__all__')
 
-    from .serializer import MiClaseSerializer
-    from .serializer import MiClase2Serializer
+    class MiClase2Serializer(serializers.ModelSerializer):
+        class Meta:
+            model = MiClase2
+            fields = ('__all__')
 
-    class MiClaseViewSet(viewsets.ModelViewSet):
-        queryset = MiClase.objects.all()
-        serializer_class = MiClaseSerializer
-
-    class MiClase2ViewSet(viewsets.ModelViewSet):
-        queryset = MiClase2.objects.all()
-        serializer_class = MiClase2Serializer
     ```
+    
+16. **Creación de Rutas**
 
-14. **Crear un Usuario Admin de Django**
+    Los ViewSet que creamos en el paso anterior generan todas las vistas y métodos para hacer el *CRUD* de nuestros datos, pero ahora necesitamos llegar hasta esos métodos, por lo que debemos generar las rutas necesarias.
+    - En el directorio de nuestra aplicación creamos un nuevo archivo *urls.py*, donde gestionaremos todas las rutas necesarias para nuestro modelo de datos completo.
+    - Dentro de este archivo, generaremos un objeto *enrutador* (routers.DefaultRouter) que se encargará de generar las rutas para los métodos mencionados. Para lograrlo usaremos el método *register* disponible dentro del objeto enrutador. Este método recibe como primer argumento el nombre que le daremos al conjunto de rutas de un *ViewSet* y como segundo argumento le indicaremos cuál será el ViewSet que registraremos, quedando de la siguiente forma:
+        ```
+        from django.urls import path,include
+        from rest_framework import routers
+        from nombre_aplicacion import views
+
+        enrutador = routers.DefaultRouter()
+
+        enrutador.register(r'miclase', views.MiClaseSerializer)
+        enrutador.register(r'miclase2', views.MiClase2Serializer)
+
+        urlpatterns = [
+            path('', include(enrutador.urls))
+        ]
+        ```
+
+    - La *r* delante del string para generar la ruta es para evitar saltos de línea generados cuando se crea la ruta, los que impedirían que se alcance el *endpoint* de manera correcta.
+    - El *urlpatterns* incluirá todas las rutas generadas dentro del enrutador y será necesario para enviarlas a *motor_django/urls.py*.
+
+17. **Incorporación de rutas a Django**
+
+    Ahora necesitamos llegar a todos estos *endpoints* desde la aplicación, por lo que incluiremos todas las rutas de nuestra aplicación en las rutas de Django.
+    El archivo debería quedar de la siguiente forma:
+        ```
+        from django.contrib import admin
+        from django.urls import path,include
+        from nombre_aplicacion import views
+
+        urlpatterns = [
+            path('admin/', admin.site.urls),
+            path('', views.inicio),
+            path('nombre_aplicacion/', include('nombre_aplicacion.urls'))
+        ]
+        ```
+
+18. **Crear un Usuario Admin de Django**
 
     El usuario *ADMIN* de Django es el que tendrá control de la aplicación y de las vistas *CRUD* de nuestro modelo de datos.
     Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
@@ -352,7 +425,6 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ```
 
     Una vez que jecutamos el comando, este nos pedirá la información del usuario mediante el mismo terminal.
-
 
 ___   
 > Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:

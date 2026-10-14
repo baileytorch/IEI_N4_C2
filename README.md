@@ -112,6 +112,16 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ```
 
     - En el directorio de nuestra app creamos un subdirectorio templates, donde pondremos nuestras vistas.
+    - Agrega la carpeta de templates a *settings.py*, añadiendo la siguiente línea dentro del apartado *TEMPLATES*: 
+        ```
+        TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [os.path.join(BASE_DIR, 'templates')]...
+            ...
+        }]
+        ```
+
     - Dentro de este subdiretorio *nombre_aplicacion/templates* creamos la vista HTML que será renderizada por el método creado anteriormente, la que llamaremos *bienvenida.html*.
     - Dentro de este archivo, pondremos el código HTML de nuestra página de bienvenida.
     - En el archivo *nombre_aplicacion/views.py* generamos el método que renderizará la vista creada:
@@ -156,7 +166,33 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         ALLOWED_HOSTS = ['localhost','127.0.0.1']
         ```
 
-        - Para que se muestre una página de error creada por nosotros, debemos tener un directorio *templates* en nuestra aplicación y dentro de ese directorio un archivo *html* de nombre *404*. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
+        - Para que se muestre una página de error creada por nosotros, debemos tener en el directorio *templates* un archivo *html* de nombre *404.html*. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
+
+    - Si *DEBUG = False*, Django renderizará nuestras páginas, pero no los archivos estáticos que deberían contener (CSS, JS, imágenes, etc.). Para que estos funcionen sin problemas, podemos resolverlo de 2 maneras:
+        - Iniciar el servidor con el apellido *--insecure*, quedando como sigue:
+        ```
+        python manage.py runserver --insecure
+        ```
+
+        - O podemos recolectar los archivos estáticos en un directorio *static*, de la siguiente manera:
+            - Asegurarnos que las rutas de los directorios estáticos estén configurados de manera correcta en *motor_django/settings.py*:
+            ```
+            import os
+
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+            STATIC_URL = '/static/'
+            STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+            STATICFILES_DIRS = [
+                os.path.join(BASE_DIR, 'static'),
+            ]
+            ```
+
+            - Ejecutar el comando *collectstatic* para que Django recolecte todos los archivos estáticos (incluyendo Bootstrap y archivos jQuery) y los ponga en *STATIC_ROOT*:
+            ```
+            python manage.py collectstatic
+            ```
 
 8. **Modelo de Datos**
     - Django controlará la base de datos mediante migraciones, scripts de bases de datos que modificarán la estructura de datos.
@@ -415,6 +451,8 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
             path('nombre_aplicacion/', include('nombre_aplicacion.urls'))
         ]
         ```
+    
+    Con todo lo anterior listo, ya podemos iniciar nuestro servidor y dirgirnos a *http://127.0.0.1:8000/nombre_aplicacion* para ver como todo nuestro modelo de datos usa las CBV para trabajar haciendo *CRUD* del mismo modelo.
 
 18. **Crear un Usuario Admin de Django**
 

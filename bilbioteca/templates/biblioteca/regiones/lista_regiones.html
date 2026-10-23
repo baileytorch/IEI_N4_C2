@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<title>Listado de Regiones</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <h3>Listado de Regiones</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-hover" id="regiones">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Código Región</td>
+                    <td>Nombre Región</td>
+                    <td>Habilitado</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for region in object_list %}
+                <tr>
+                    <td>{{ region.id }}</td>
+                    <td>{{ region.codigo }}</td>
+                    <td>{{ region.region }}</td>
+                    <td>{{ region.habilitado }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No se han encontrado datos de regiones.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>Id</td>
+                    <td>Código Región</td>
+                    <td>Nombre Región</td>
+                    <td>Habilitado</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scritp %}
+<script>
+    window.onload = function () {
+        new DataTable('#regiones');
+    }
+</script>
+{% endblock %}

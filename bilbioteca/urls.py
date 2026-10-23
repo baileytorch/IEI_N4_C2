@@ -4,11 +4,13 @@ from bilbioteca import views
 
 enrutador = routers.DefaultRouter()
 
-enrutador.register(r'paises', views.PaisViewSet)
-enrutador.register(r'regiones', views.RegionViewSet)
-enrutador.register(r'provincias', views.ProvinciaViewSet)
-enrutador.register(r'comunas', views.ComunaViewSet)
+enrutador.register(r'paisesVS', views.PaisViewSet)
+enrutador.register(r'regionesVS', views.RegionViewSet)
+enrutador.register(r'provinciasVS', views.ProvinciaViewSet)
+enrutador.register(r'comunasVS', views.ComunaViewSet)
+enrutador.register(r'direccionesVS', views.DireccionViewSet)
 
 urlpatterns = [
-    path('', include(enrutador.urls))
+    path('', include(enrutador.urls)),
+    path('regiones/listado_regiones', views.RegionListView.as_view())
 ]

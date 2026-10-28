@@ -16,10 +16,10 @@
         <table class="table table-striped table-hover" id="regiones">
             <thead>
                 <tr>
-                    <td>Id</td>
-                    <td>Código Región</td>
-                    <td>Nombre Región</td>
-                    <td>Habilitado</td>
+                    <th>Id</th>
+                    <th>Código Región</th>
+                    <th>Nombre Región</th>
+                    <th>Habilitado</th>
                 </tr>
             </thead>
 
@@ -29,21 +29,21 @@
                     <td>{{ region.id }}</td>
                     <td>{{ region.codigo }}</td>
                     <td>{{ region.region }}</td>
-                    <td>{{ region.habilitado }}</td>
+                    <td>{% if region.habilitado %}Habilitado{% else %}Deshabilitado{% endif %}</td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="4">No se han encontrado datos de regiones.</td>
+                    <td colspan="4">No se han encontrado datos.</td>
                 </tr>
                 {% endfor %}
             </tbody>
 
             <tfoot>
                 <tr>
-                    <td>Id</td>
-                    <td>Código Región</td>
-                    <td>Nombre Región</td>
-                    <td>Habilitado</td>
+                    <th>Id</th>
+                    <th>Código Región</th>
+                    <th>Nombre Región</th>
+                    <th>Habilitado</th>
                 </tr>
             </tfoot>
         </table>

@@ -135,6 +135,7 @@ class Libro(models.Model):
     subgenero = models.ForeignKey(SubGenero,on_delete=models.CASCADE,null=False)
     edicion = models.ForeignKey(Edicion,on_delete=models.CASCADE,null=False)
     biblioteca = models.ForeignKey(Biblioteca,on_delete=models.CASCADE,null=False)
+    sinopsis = models.TextField(null=True)
     habilitado = models.BooleanField(str_habilitado,default=True,null=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)

@@ -12,5 +12,7 @@ enrutador.register(r'direccionesVS', views.DireccionViewSet)
 
 urlpatterns = [
     path('', include(enrutador.urls)),
-    path('regiones/listado_regiones', views.RegionListView.as_view())
+    path('regiones/listado_regiones', views.RegionListView.as_view()),
+    path('paises/listado_paises', views.PaisListView.as_view()),
+    path('bibliotecas/listado_bibliotecas', views.BibliotecaListView.as_view())
 ]

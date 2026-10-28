@@ -13,6 +13,10 @@ class PaisViewSet(viewsets.ModelViewSet):
     queryset = mo.Pais.objects.all()
     serializer_class = ser.PaisSerializer
 
+class PaisListView(ListView):
+    model = mo.Pais
+    template_name = 'biblioteca/paises/lista_paises.html'
+
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = mo.Region.objects.all()
     serializer_class = ser.RegionSerializer
@@ -32,3 +36,7 @@ class ComunaViewSet(viewsets.ModelViewSet):
 class DireccionViewSet(viewsets.ModelViewSet):
     queryset = mo.Direccion.objects.all()
     serializer_class = ser.DireccionSerializer
+
+class BibliotecaListView(ListView):
+    model = mo.Biblioteca
+    template_name = 'biblioteca/biblioteca/lista_bibliotecas.html'

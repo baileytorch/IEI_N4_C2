@@ -514,7 +514,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     Las vistas basadas en clase se crearán dentro de _mi_aplicacion/views.py_, nuestro archivo controlador, siguiendo las siguientes instrucciones:
     - Importamos todos nuestros modelos de datos al archivo _views.py_.
     - Junto con la importación de las clases, importamos nuestros serializadores, puesto que se ancargarán de dejar los datos en un formato que podamos usar en las vistas.
-    - con todo esto ya podemos crear nuestro _ViewSet_, o colección de vistas para trabajar con los datos del modelo desde Django Admin.
+    - con todo esto ya podemos crear nuestro _ViewSet_, o colección de vistas para trabajar con los datos del modelo desde Django.
 
     El archivo debería quedar de la siguiente forma:
 

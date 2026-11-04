@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<title>Listado de Autores</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <h3>Listado de Autores</h3>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col">
+        <a href="{% url 'crear_autor' %}" class="btn btn-primary">Agregar Autor</a>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-hover" id="autores">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Pseudónimo</th>
+                    <th>Nacionalidad</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Fecha Defunción</th>
+                    <th>Habilitado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for autor in object_list %}
+                <tr>
+                    <td>{{ autor.id }}</td>
+                    <td>{{ autor.nombre }}</td>
+                    <td>{{ autor.pseudonimo }}</td>
+                    <td>{{ autor.pais.nacionalidad }}</td>
+                    <td>{{ autor.fecha_nacimiento }}</td>
+                    <td>{{ autor.fecha_defuncion }}</td>
+                    <td>{% if autor.habilitado %}Habilitado{% else %}Deshabilitado{% endif %}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No se han encontrado datos.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Pseudónimo</th>
+                    <th>Nacionalidad</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Fecha Defunción</th>
+                    <th>Habilitado</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scritp %}
+<script>
+    window.onload = function () {
+        new DataTable('#autores');
+    }
+</script>
+{% endblock %}

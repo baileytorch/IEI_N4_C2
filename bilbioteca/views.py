@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django import forms
 from rest_framework import viewsets
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 from . import models as mo
 from . import serializer as ser
@@ -40,3 +41,18 @@ class DireccionViewSet(viewsets.ModelViewSet):
 class BibliotecaListView(ListView):
     model = mo.Biblioteca
     template_name = 'biblioteca/biblioteca/lista_bibliotecas.html'
+
+class AutorListView(ListView):
+    model = mo.Autor
+    template_name = 'biblioteca/autor/lista_autores.html'
+    
+class AutorCreateView(CreateView):
+    fields = ['nombre','pseudonimo','nacionalidad','fecha_nacimiento','fecha_defuncion','biografia']
+    model = mo.Autor
+    success_url = 'autores/listado_autores'
+    template_name = 'biblioteca/autor/crear_autor.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['paises'] = mo.Pais.objects.all()
+        return context

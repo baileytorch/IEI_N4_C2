@@ -40,9 +40,9 @@
                     <td>{{ autor.id }}</td>
                     <td>{{ autor.nombre }}</td>
                     <td>{{ autor.pseudonimo }}</td>
-                    <td>{{ autor.pais.nacionalidad }}</td>
+                    <td>{{ autor.nacionalidad.nombre }}</td>
                     <td>{{ autor.fecha_nacimiento }}</td>
-                    <td>{{ autor.fecha_defuncion }}</td>
+                    <td>{% if autor.fecha_defuncion is not None %}{{ autor.fecha_defuncion }}{% else %}--{% endif %}</td>
                     <td>{% if autor.habilitado %}Habilitado{% else %}Deshabilitado{% endif %}</td>
                 </tr>
                 {% empty %}

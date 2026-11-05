@@ -5,6 +5,7 @@ from django.views.generic import ListView, CreateView
 
 from . import models as mo
 from . import serializer as ser
+from . import forms as fo
 
 # Create your views here.
 def inicio(request):
@@ -47,12 +48,7 @@ class AutorListView(ListView):
     template_name = 'biblioteca/autor/lista_autores.html'
     
 class AutorCreateView(CreateView):
-    fields = ['nombre','pseudonimo','nacionalidad','fecha_nacimiento','fecha_defuncion','biografia']
+    form_class = fo.AutorForm
     model = mo.Autor
-    success_url = 'autores/listado_autores'
+    success_url = 'listado_autores'
     template_name = 'biblioteca/autor/crear_autor.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['paises'] = mo.Pais.objects.all()
-        return context

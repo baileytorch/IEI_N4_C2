@@ -15,54 +15,50 @@
 <div class="row">
     <form action="" method="post">
         {% csrf_token %}
+
         <div class="row">
             <div class="col">
-                <label for="nombre" class="form-label">Nombre Autor:</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre Autor..." class="form-control">
+                <label for="id_nombre" class="form-label">Nombre Autor:</label>
+                {{ form.nombre }}
             </div>
 
             <div class="col">
-                <label for="pseudonimo" class="form-label">Pseudónimo Autor:</label>
-                <input type="text" name="pseudonimo" id="pseudonimo" placeholder="Pseudónimo Autor..."
-                    class="form-control">
+                <label for="id_pseudonimo" class="form-label">Pseudónimo Autor:</label>
+                {{ form.pseudonimo }}
             </div>
         </div>
         <br>
 
         <div class="row">
             <div class="col-4">
-                <label for="nacionalidad" class="form-label">Nacionalidad:</label>
-                <select name="nacionalidad" id="nacionalidad" class="form-select">
-                    <option value="">Seleccione Nacionalidad</option>
-                    {% for pais in paises %}
-                    <option value="{{ pais.id }}">{{ pais.nombre }} - {{ pais.nacionalidad }}</option>
-                    {% endfor %}
-                </select>
+                <label for="id_nacionalidad" class="form-label">Nacionalidad:</label>
+                {{ form.nacionalidad }}
             </div>
 
             <div class="col-4">
-                <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento:</label>
-                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
+                <label for="id_fecha_nacimiento" class="form-label">Fecha Nacimiento:</label>
+                {{ form.fecha_nacimiento }}
             </div>
 
             <div class="col-4">
-                <label for="fecha_defuncion" class="form-label">Fecha Defunción:</label>
-                <input type="date" name="fecha_defuncion" id="fecha_defuncion" class="form-control">
+                <label for="id_fecha_defuncion" class="form-label">Fecha Defunción:</label>
+                {{ form.fecha_defuncion }}
             </div>
         </div>
         <br>
 
         <div class="row">
             <div class="col">
-                <label for="biografia" class="form-label">Biografía:</label>
-                <textarea rows="5" type="text" name="biografia" id="biografia" class="form-control"></textarea> 
+                <label for="id_biografia" class="form-label">Biografía:</label>
+                {{ form.biografia }}
             </div>
         </div>
         <br>
 
         <div class="row">
-            <div class="col">
-                <input type="submit" value="Guardar" class="btn btn-primary">
+            <div class="col-12 d-flex justify-content-end gap-2">
+                <button type="reset" class="btn btn-secondary">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </form>

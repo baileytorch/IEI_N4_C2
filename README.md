@@ -10,6 +10,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 ## Creación de Proyectos con Django
 
 1.  **Creación de Ambiente Virtual**
+
     - Habiendo creado y clonado nuestro repositorio, abrimos la carpeta contenedora en VS Code.
     - Dentro de este directorio, crearemos un ambiente virtual que mantendrá aislada toda la configuración de nuestro proyecto y su entorno de trabajo.
     - Para lograrlo, iniciaremos un nuevo terminal, estando ubicados en el directorio principal.
@@ -26,6 +27,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       - _Scripts_: Directorio que contiene distintos scripts que serán usados durante el desarrollo, como Activate y deactivate.
 
 2.  **Activación de Ambiente Virtual**
+
     - Mediante el terminal accedemos al directorio creado anteriormente y a su subdirectorio Scripts, ejecutando el siguiente comando:
 
       ```
@@ -60,6 +62,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - El comando _cd.._ permite salir de un directorio y ubicarnos en el superior, por lo que deberíamos ejecutarlo 2 veces para llegar al directorio principal, saliendo de _mi_ambiente\Scripts_.
 
 3.  **Actualización de PIP**
+
     - A pesar de haber generado una instalación del entorno desde cero, no está asegurado que contenga la última versión de PIP, por lo que debemos actualizarlo.
     - Para lograrlo, ejecutamos el siguiente comando en nuestro terminal:
 
@@ -68,6 +71,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       ```
 
 4.  **Instalación de Entorno Django**
+
     - Mediante terminal, estando ubicados en el directorio raíz de la aplicación, ejecutaremos el siguiente comando:
 
       ```
@@ -92,6 +96,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       - _urls.py_, contiene las rutas para redirigir las solicitudes _REQUEST_ que lleguen a la aplicación.
 
 5.  **Creación de la Aplicación**
+
     - A continuación, para crear la aplicación que debemos construir, ejecutaremos el siguiente comando mediante terminal:
 
       ```
@@ -114,6 +119,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Este comando inicia el servidor, el que se carga en la url http://127.0.0.1:8000.
 
 6.  **Plantillas Base**
+
     Las plantillas base permiten crear un esqueleto de diseño común para todas las páginas de una aplicación, evitando la repetición de código HTML y manteniendo la consistencia visual. Esto se logra creando un archivo HTML base que contiene bloques de contenido dinámico, y luego extendiendo esta plantilla en otras páginas para rellenar esos bloques con contenido específico de cada vista.
     - Dentro del directorio de nuestra aplicación, crearemos un nuevo directorio llamado _templates_, donde pondremos todas las vistas de nuestra aplicación.
     - Crear un archivo HTML de plantilla base en la carpeta _mi_aplicacion/templates_ recién creada, puede llamarse _base.html_.
@@ -149,6 +155,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       ```
 
 7.  **Modificando la página de inicio**
+
     - Por defecto cuando iniciamos el servidor, carga una página con información de Django, pero no es lo que debiéramos ver cuando cargamos una aplicación, por lo que cambiaremos la página de inicio.
     - Primero debemos indicarle a Django que el directorio de nuestra aplicación contiene una APP, agregamos nuestra APP a la lista *INSTALLED_APPS* de *motor_django/settings.py*:
 
@@ -190,6 +197,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Cuando iniciemos nuevamente nuestro servidor, debiera cargar la vista recién creada en lugar de la vista Django por defecto.
 
 8.  **Página de Error 404 Genérica**
+
     - Si python NO encuentra un recurso (página) solicitado, arrojará una página de error con información del servidor, lo que involucra un serio problema de seguridad. Para evitarlo, debemos cargar un página genérica de error, lo que lograremos de la siguiente forma:
       - Deshabilitamos el modo de pruebas de nuestra aplicación en _motor_django/settings.py_:
 
@@ -213,6 +221,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       - Para que se muestre una página de error creada por nosotros, dentro del directorio _templates_ creado anteriormente, crearemos un archivo _html_ de nombre _404_. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
 
 9.  **Manejo de Archivos Estáticos**
+
     Para cargar y usar tus propios archivos estáticos (CSS, JavaScript, imágenes) en Django, sigue estos pasos básicos.
     - Asegúrate de que en tu archivo _motor_django/settings.py_ esté configurado el STATIC_URL y la ruta donde Django buscará los archivos:
 
@@ -268,6 +277,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         ```
 
 10. **Manejo de Base de Datos**
+
     Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:
     - Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
 
@@ -316,6 +326,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       ```
 
 11. **Modelo de Datos**
+
     - Django controlará la base de datos mediante migraciones, scripts de bases de datos que modificarán la estructura de datos.
     - Django maneja varias tablas de manera predeterminada para información interna, para que se creen en la DB, debemos ejecutar el comando:
 
@@ -398,6 +409,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     > Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
 
 12. **Datos Iniciales de la Aplicación**
+
     Al estar definida nuestra base de datos y aplicadas las migraciones de nuestro modelo de datos, tenemos la estructura de datos requerida para alojar nuestros registros.
     En este punto será importante contar con datos genéricos iniciales de la aplicación, como listas o parámetros que deben estar pre-cargados.
     Esto lo lograremos de la siguiente forma:
@@ -429,6 +441,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     Donde _"pk"_ es el campo _id_ generado de manera automática por Django y _fields_ serán los atributos de nuestro modelo.
 
 13. **Desacoplar Datos Sensibles**
+    
     Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la _'SECRET_KEY'_ de Django, por lo que debemos _DESACOPLAR_ esos datos y ponerlos en un archivo de ambiente.
     - Instalamos la librería _decouple_ para desacoplar los datos y posteriormente leerlos desde un archivo de ambiente. El siguiente comando será necesario para instalar la librería:
 
@@ -456,6 +469,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
 14. **Instalación Django Rest Framework**
+
     Django Rest Framework es una librería que contiene muchas herramientas que usaremos en nuestro desarrollo django, como los serializadores.
     Para instalarlo ejecutaremos el siguiente comando mediante terminal:
 
@@ -470,7 +484,8 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         ]
 
 15. **Incorporar Modelo de Datos al administrador de Django**
-    En el archivo _mi_aplicacion/admin.py_ debemos _REGISTRAR_ nuestro modelo de datos, para que el admin de django pueda procesar los datos.
+
+    En el archivo *mi_aplicacion/admin.py* debemos _REGISTRAR_ nuestro modelo de datos, para que el admin de django pueda procesar los datos.
     Esto lo lograremos de la siguiente forma:
     _admin.py_
 
@@ -485,6 +500,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     Cuando ingresemos a la aplicación, en la sección _admin_ podremos hacer _CRUD_ de cada objeto de nuestro modelo de datos que haya sido registrado.
 
 16. **Creación de Serializadores**
+
     La librería _rest_framework_ que instalamos anteriormente, tiene la herramienta para serializar nuestro modelo de datos en formato _JSON_, que será necesario para trabajar los datos en la aplicación web, lo que lograremos siguiendo estos pasos:
     - Primero crearemos un archivo _serializer.py_ en el directorio de nuestra aplicación.
     - En el archivo creado, importaremos _serializers_ para usarlos en la serialización de nuestro modelo.
@@ -510,6 +526,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
                 # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
 
 17. **Creación de Vistas CBV**
+
     CBV es el acrónimo de Class Based View o _Vista Basada en Clase_, es una colección de vistas basadas en un modelo de datos y que nos permiten hacer _CRUD_ de los datos de ese modelo.
     Las vistas basadas en clase se crearán dentro de _mi_aplicacion/views.py_, nuestro archivo controlador, siguiendo las siguientes instrucciones:
     - Importamos todos nuestros modelos de datos al archivo _views.py_.
@@ -533,6 +550,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ```
 
 18. **Creación de Rutas**
+
     Los ViewSet que creamos en el paso anterior generan las vistas y métodos para hacer el _CRUD_ de nuestros datos con métodos _HTTP/S_ de tipo _POST_, _GET_, _PUT/PATCH_ o _DELETE_, pero ahora necesitamos llegar hasta esos métodos o _END-POINTS_, por lo que debemos generar las rutas necesarias.
     - En el directorio de nuestra aplicación creamos un nuevo archivo _urls.py_, donde gestionaremos todas las rutas necesarias para nuestro modelo de datos completo.
     - Dentro de este archivo, generaremos un objeto _enrutador_ (routers.DefaultRouter) que se encargará de generar las rutas para los métodos mencionados.
@@ -553,11 +571,12 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       ]
       ```
 
-    - La _r_ delante del string para generar la ruta es para evitar saltos de línea generados cuando se crea la ruta, es un tipo de dato _RAW_ de Python.
-    - El _urlpatterns_ incluirá todas las rutas generadas dentro del enrutador y será necesario para enviarlas a _motor_django/urls.py_.
+    - La *r* delante del string para generar la ruta es para evitar saltos de línea generados cuando se crea la ruta, es un tipo de dato *RAW* de Python.
+    - El _urlpatterns_ incluirá todas las rutas generadas dentro del enrutador y será necesario para enviarlas a *motor_django/urls.py*.
 
 19. **Incorporación de rutas a Django**
-    - Para que las rutas generadas en la aplicación queden disponibles dentro de _django/urls.py_, debemos importarlas e incluirlas, de la siguiente forma:
+
+    - Para que las rutas generadas en la aplicación queden disponibles dentro de *motor_django/urls.py*, debemos importarlas e incluirlas, de la siguiente forma:
 
       ```
       from django.contrib import admin
@@ -575,7 +594,13 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
 20. **CRUD Manual**
 
+    *Django* tiene la opción de hacer *CRUD* de nuestros datos desde *ADMIN* al incluir nuestro modelo de datos en *mi_aplicacion/admin.py*, o usando los serializadores con las rutas creadas por nosotros.
+    Ninguno de estos 2 métodos debiera estar disponible para los usuarios de nuestra aplicación, por lo que deberemos crear toda la estructura necesaria para hacer *CRUD* de nuestros datos, con la ventaja de que además tendremos mayor control de lo que ocurre con la aplicación, los datos y los usuarios.
+
+    - ### Listado de Objetos
+
 21. **Inicio de Sesión con Django**
+
     El sistema de autenticación incluido con Django se centra en el modelo User, lo que permite manejar cuentas de usuario, permisos, y tareas esenciales como login, logout, y control de contraseñas.
 
     ### Extensión de User
@@ -801,6 +826,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 ---
 
 **Crear un Usuario Admin de Django**
+
 El usuario _ADMIN_ de Django es el que tendrá control administrativo de la aplicación y también podrá hacer _CRUD_ de nuestro modelo de datos.
 Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
 
@@ -813,6 +839,7 @@ Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
 ---
 
 **Control de Dependecias**
+
 Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
 
     ```
@@ -830,6 +857,7 @@ Este archivo tendrá una lista de todas las librerías incluídas en nuestro _VE
 ---
 
 **Control de Fechas Global**
+
 Si se necesita aplicar el mismo formato de fecha en toda la aplicación, debemos agregar un configuración global en _settings.py_ como un diccionario llamado _REST_FRAMEWORK_.
 
     ```

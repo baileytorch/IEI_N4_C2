@@ -60,3 +60,50 @@ class AutorForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['nacionalidad'].empty_label = '-- Selecciona una opción --'
+        
+class LibroForm(forms.ModelForm):
+    class Meta:
+        model = mo.Libro
+        fields = [
+            'titulo',
+            'paginas',
+            'autor',
+            'subgenero',
+            'sinopsis'
+        ]
+        widgets = {
+            'titulo': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Título Libro...',
+                    'type': 'text'
+                }
+            ),
+            'paginas': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'type': 'number'
+                }
+            ),
+            'autor': forms.Select(
+                attrs={
+                    'class': 'form-select'
+                }
+            ),
+            'subgenero': forms.Select(
+                attrs={
+                    'class': 'form-select'
+                }
+            ),
+            'sinopsis': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'rows': 5
+                }
+            )
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['autor'].empty_label = '-- Selecciona una opción --'
+        self.fields['subgenero'].empty_label = '-- Selecciona una opción --'

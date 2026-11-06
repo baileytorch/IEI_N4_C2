@@ -52,3 +52,13 @@ class AutorCreateView(CreateView):
     model = mo.Autor
     success_url = 'listado_autores'
     template_name = 'biblioteca/autor/crear_autor.html'
+
+class LibroListView(ListView):
+    model = mo.Libro
+    template_name = 'biblioteca/libro/lista_libros.html'
+    
+class LibroCreateView(CreateView):
+    form_class = fo.LibroForm
+    model = mo.Libro
+    success_url = 'listado_libros'
+    template_name = 'biblioteca/libro/crear_libro.html'

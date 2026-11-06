@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<title>Listado de Libros</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <h3>Listado de Libros</h3>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col">
+        <a href="{% url 'crear_libro' %}" class="btn btn-primary">Agregar Libro</a>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-hover" id="libros">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Páginas</th>
+                    <th>Autor</th>
+                    <th>Género</th>
+                    <th>Sinopsis</th>
+                    <th>Habilitado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for libro in object_list %}
+                <tr>
+                    <td>{{ libro.id }}</td>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.paginas }}</td>
+                    <td>{{ libro.autor.nombre }}</td>
+                    <td>{{ libro.subgenero }}</td>
+                    <td>{% if libro.sinopsis is not None %}{{ libro.sinopsis }}{% else %}--{% endif %}</td>
+                    <td>{% if libro.habilitado %}Habilitado{% else %}Deshabilitado{% endif %}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No se han encontrado datos.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Páginas</th>
+                    <th>Autor</th>
+                    <th>Género</th>
+                    <th>Sinopsis</th>
+                    <th>Habilitado</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scritp %}
+<script>
+    window.onload = function () {
+        new DataTable('#libros');
+    }
+</script>
+{% endblock %}

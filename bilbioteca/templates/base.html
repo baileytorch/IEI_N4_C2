@@ -33,15 +33,15 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Inicio
+                        <a class="nav-link active" href="{% url 'inicio' %}">Inicio
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Libros</a>
+                        <a class="nav-link" href="{% url 'listado_libros' %}">Libros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Autores</a>
+                        <a class="nav-link" href="{% url 'listado_autores' %}">Autores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Categorías</a>

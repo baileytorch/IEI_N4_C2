@@ -1,0 +1,506 @@
+[
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 1,
+		"fields": {
+			"subgenero": "Novela",
+			"descripcion": "Narración extensa en prosa que desarrolla personajes y acontecimientos ficticios o inspirados en la realidad.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 2,
+		"fields": {
+			"subgenero": "Cuento",
+			"descripcion": "Relato breve que desarrolla una acción principal con pocos personajes.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 3,
+		"fields": {
+			"subgenero": "Novela corta",
+			"descripcion": "Narración en prosa de extensión intermedia entre el cuento y la novela.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 4,
+		"fields": {
+			"subgenero": "Fábula",
+			"descripcion": "Relato breve, a menudo protagonizado por animales, que transmite una enseñanza.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 5,
+		"fields": {
+			"subgenero": "Mito",
+			"descripcion": "Relato tradicional que explica orígenes, fenómenos o creencias mediante seres extraordinarios.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 6,
+		"fields": {
+			"subgenero": "Leyenda",
+			"descripcion": "Relato tradicional que combina hechos históricos y elementos maravillosos.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 7,
+		"fields": {
+			"subgenero": "Parábola",
+			"descripcion": "Narración breve que propone una enseñanza mediante una situación simbólica.",
+			"genero": 1,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 8,
+		"fields": {
+			"subgenero": "Oda",
+			"descripcion": "Poema de tono elevado que expresa admiración o celebración.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 9,
+		"fields": {
+			"subgenero": "Elegía",
+			"descripcion": "Poema que expresa dolor o lamentación, generalmente ante una pérdida.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 10,
+		"fields": {
+			"subgenero": "Égloga",
+			"descripcion": "Composición poética que presenta escenas idealizadas de la vida pastoril.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 11,
+		"fields": {
+			"subgenero": "Himno",
+			"descripcion": "Composición poética o musical de tono solemne dedicada a una persona o causa.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 12,
+		"fields": {
+			"subgenero": "Canción",
+			"descripcion": "Poema lírico de ritmo marcado, destinado o adaptable al canto.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 13,
+		"fields": {
+			"subgenero": "Epigrama",
+			"descripcion": "Poema breve que expresa una idea con ingenio o intención satírica.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 14,
+		"fields": {
+			"subgenero": "Soneto",
+			"descripcion": "Poema de catorce versos organizado tradicionalmente en dos cuartetos y dos tercetos.",
+			"genero": 2,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 15,
+		"fields": {
+			"subgenero": "Tragedia",
+			"descripcion": "Obra dramática cuyo conflicto conduce a un desenlace doloroso o catastrófico.",
+			"genero": 3,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 16,
+		"fields": {
+			"subgenero": "Comedia",
+			"descripcion": "Obra dramática que representa conflictos cotidianos con intención humorística.",
+			"genero": 3,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 17,
+		"fields": {
+			"subgenero": "Drama",
+			"descripcion": "Obra teatral centrada en conflictos humanos de tono serio.",
+			"genero": 3,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 18,
+		"fields": {
+			"subgenero": "Tragicomedia",
+			"descripcion": "Obra dramática que combina elementos trágicos y cómicos.",
+			"genero": 3,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 19,
+		"fields": {
+			"subgenero": "Entremés",
+			"descripcion": "Pieza teatral breve, generalmente cómica, representada entre actos.",
+			"genero": 3,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 20,
+		"fields": {
+			"subgenero": "Epopeya",
+			"descripcion": "Poema narrativo extenso sobre las hazañas de héroes y el destino de un pueblo.",
+			"genero": 4,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 21,
+		"fields": {
+			"subgenero": "Cantar de gesta",
+			"descripcion": "Poema épico medieval que narra las hazañas de un héroe.",
+			"genero": 4,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 22,
+		"fields": {
+			"subgenero": "Poema épico",
+			"descripcion": "Composición narrativa en verso sobre hechos heroicos o legendarios.",
+			"genero": 4,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 23,
+		"fields": {
+			"subgenero": "Diálogo didáctico",
+			"descripcion": "Exposición de ideas y enseñanzas mediante una conversación estructurada.",
+			"genero": 5,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 24,
+		"fields": {
+			"subgenero": "Tratado",
+			"descripcion": "Obra que desarrolla de forma sistemática una materia o disciplina.",
+			"genero": 5,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 25,
+		"fields": {
+			"subgenero": "Apólogo",
+			"descripcion": "Relato breve que comunica una enseñanza moral o práctica.",
+			"genero": 5,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 26,
+		"fields": {
+			"subgenero": "Ensayo literario",
+			"descripcion": "Reflexión personal sobre una obra, corriente o tema literario.",
+			"genero": 6,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 27,
+		"fields": {
+			"subgenero": "Ensayo crítico",
+			"descripcion": "Analiza y valora una obra, idea o fenómeno cultural con argumentos.",
+			"genero": 6,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 28,
+		"fields": {
+			"subgenero": "Ensayo filosófico",
+			"descripcion": "Examina preguntas y conceptos filosóficos mediante una argumentación personal.",
+			"genero": 6,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 29,
+		"fields": {
+			"subgenero": "Biografía",
+			"descripcion": "Relato documentado de la vida de una persona escrito por otra.",
+			"genero": 7,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 30,
+		"fields": {
+			"subgenero": "Autobiografía",
+			"descripcion": "Relato en que una persona narra aspectos de su propia vida.",
+			"genero": 7,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 31,
+		"fields": {
+			"subgenero": "Memorias",
+			"descripcion": "Narración retrospectiva de experiencias y hechos vividos por su autor.",
+			"genero": 7,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 32,
+		"fields": {
+			"subgenero": "Diario personal",
+			"descripcion": "Registro periódico de vivencias y reflexiones personales.",
+			"genero": 7,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 33,
+		"fields": {
+			"subgenero": "Novela histórica",
+			"descripcion": "Novela ambientada en una época pasada y construida sobre un contexto histórico.",
+			"genero": 8,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 34,
+		"fields": {
+			"subgenero": "Crónica histórica",
+			"descripcion": "Relato ordenado de acontecimientos históricos con atención a su contexto.",
+			"genero": 8,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 35,
+		"fields": {
+			"subgenero": "Relato histórico",
+			"descripcion": "Narración basada en hechos del pasado, presentada con recursos literarios.",
+			"genero": 8,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 36,
+		"fields": {
+			"subgenero": "Divulgación científica",
+			"descripcion": "Explica conocimientos científicos para un público general.",
+			"genero": 9,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 37,
+		"fields": {
+			"subgenero": "Artículo científico",
+			"descripcion": "Texto que comunica resultados de investigación con metodología y referencias.",
+			"genero": 9,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 38,
+		"fields": {
+			"subgenero": "Monografía científica",
+			"descripcion": "Estudio detallado y documentado sobre un tema científico específico.",
+			"genero": 9,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 39,
+		"fields": {
+			"subgenero": "Reportaje",
+			"descripcion": "Texto periodístico que investiga y desarrolla un tema de interés público.",
+			"genero": 10,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 40,
+		"fields": {
+			"subgenero": "Noticia",
+			"descripcion": "Texto que comunica de manera directa un hecho reciente y de interés.",
+			"genero": 10,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 41,
+		"fields": {
+			"subgenero": "Entrevista",
+			"descripcion": "Texto organizado a partir de preguntas y respuestas para informar o profundizar un tema.",
+			"genero": 10,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.subgenero",
+		"pk": 42,
+		"fields": {
+			"subgenero": "Crónica periodística",
+			"descripcion": "Relato de hechos actuales que combina información y recursos narrativos.",
+			"genero": 10,
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	}
+]

@@ -1,0 +1,112 @@
+[
+	{
+		"model": "bilbioteca.genero",
+		"pk": 1,
+		"fields": {
+			"genero": "Narrativo",
+			"descripcion": "Relata hechos reales o ficticios mediante una voz narrativa.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 2,
+		"fields": {
+			"genero": "Lírico",
+			"descripcion": "Expresa sentimientos, emociones o reflexiones con intención estética.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 3,
+		"fields": {
+			"genero": "Dramático",
+			"descripcion": "Presenta conflictos mediante diálogos y acciones de personajes, generalmente para su representación.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 4,
+		"fields": {
+			"genero": "Épico",
+			"descripcion": "Narra las hazañas de héroes y acontecimientos relevantes para una comunidad.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 5,
+		"fields": {
+			"genero": "Didáctico",
+			"descripcion": "Comunica conocimientos, ideas o enseñanzas con una finalidad formativa.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 6,
+		"fields": {
+			"genero": "Ensayo",
+			"descripcion": "Expone y desarrolla una interpretación personal sobre un tema.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 7,
+		"fields": {
+			"genero": "Biográfico",
+			"descripcion": "Relata la vida y trayectoria de una persona.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 8,
+		"fields": {
+			"genero": "Histórico",
+			"descripcion": "Aborda acontecimientos o épocas del pasado, reales o recreados.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 9,
+		"fields": {
+			"genero": "Científico",
+			"descripcion": "Presenta conocimientos, investigaciones o explicaciones sobre ciencias.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	},
+	{
+		"model": "bilbioteca.genero",
+		"pk": 10,
+		"fields": {
+			"genero": "Informativo",
+			"descripcion": "Entrega información y contexto sobre hechos, temas o asuntos de interés.",
+			"habilitado": true,
+			"created_at": "2026-10-15T00:00:00-03:00",
+			"updated_at": "2026-10-15T00:00:00-03:00"
+		}
+	}
+]

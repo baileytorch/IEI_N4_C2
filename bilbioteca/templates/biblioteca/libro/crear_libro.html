@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<title>Creación de Libro</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <h3>Agregar Libro</h3>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col">
+                <label for="id_titulo" class="form-label">Título:</label>
+                {{ form.titulo }}
+            </div>
+
+            <div class="col">
+                <label for="id_paginas" class="form-label">Cantidad de Páginas:</label>
+                {{ form.paginas }}
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label for="id_autor" class="form-label">Autor:</label>
+                {{ form.autor }}
+            </div>
+
+            <div class="col">
+                <label for="id_subgenero" class="form-label">Categoría:</label>
+                {{ form.subgenero }}
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label for="id_sinopsis" class="form-label">Sinopsis:</label>
+                {{ form.sinopsis }}
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end gap-2">
+                <button type="reset" class="btn btn-secondary">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scritp %}
+<script>
+</script>
+{% endblock %}

@@ -89,6 +89,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       django-admin startproject motor_django .
       ```
 
+    - *motor_django* es el nombre que le daremos a la estructura de directorios y archivos que contendrá el motor del framework. 
     - No debe olvidar el _PUNTO_ al final del comando, para indicar que el directorio de Django se debe crear en el directorio principal de trabajo.
     - Este comando creó la estructura de archivos de Django con nombre _motor_django_, el que Ud. puede cambiar al que guste. Debemos recordar que debe ser suficientemente descriptivo, por lo que es común usar el acrónimo _drf_ por _Django Rest Framework_.
     - Este directorio contiene los archivos de configuración de Django, dentro de los que tenemos.
@@ -122,7 +123,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     Las plantillas base permiten crear un esqueleto de diseño común para todas las páginas de una aplicación, evitando la repetición de código HTML y manteniendo la consistencia visual. Esto se logra creando un archivo HTML base que contiene bloques de contenido dinámico, y luego extendiendo esta plantilla en otras páginas para rellenar esos bloques con contenido específico de cada vista.
     - Dentro del directorio de nuestra aplicación, crearemos un nuevo directorio llamado _templates_, donde pondremos todas las vistas de nuestra aplicación.
-    - Crear un archivo HTML de plantilla base en la carpeta _mi_aplicacion/templates_ recién creada, puede llamarse _base.html_.
+    - Crea un archivo HTML de plantilla base en la carpeta _mi_aplicacion/templates_ recién creada, puede llamarse _base.html_.
 
       ```html
       <!DOCTYPE html>
@@ -147,9 +148,13 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Las vistas extienden desde la plantilla base utilizando la sintaxis `{% extends "plantilla_base.html" %}`.
 
       ```html
-      {% extends "base.html" %} {% block titulo %}Página de Inicio{% endblock %}
-      {% block titulo_encabezado %}¡Bienvenido a mi sitio!{%endblock %} {% block
-      contenido %}
+      {% extends "base.html" %}
+      
+      {% block titulo %}Página de Inicio{% endblock %}
+      
+      {% block titulo_encabezado %}¡Bienvenido a mi sitio!{%endblock %}
+      
+      {% block contenido %}
       <p>Este es el contenido específico de la página de inicio.</p>
       {% endblock %}
       ```
@@ -166,9 +171,9 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       ]
       ```
 
-    - Dentro del subdiretorio _mi_aplicacion/templates_ creamos la vista HTML que será renderizada por el método creado anteriormente, la que llamaremos _bienvenida.html_.
+    - Dentro del subdiretorio _mi_aplicacion/templates_ creamos la vista HTML que será renderizada por el método que crearemos para cargar la página cuando inicie la aplicación, la que llamaremos *bienvenida.html*.
     - Dentro de este archivo, pondremos el código HTML de nuestra página de bienvenida.
-    - En el archivo _mi_aplicacion/views.py_ generamos el método que renderizará la vista creada:
+    - En el archivo *mi_aplicacion/views.py* generamos el método que renderizará la vista creada:
 
       ```
       from django.shortcuts import render
@@ -177,7 +182,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
           return render(request, 'bienvenida.html')
       ```
 
-    - Luego debemos importar las vistas desde nuestra app en _motor_django/urls.py_ y llamar al método que renderizará esa vista:
+    - Luego debemos importar las vistas desde nuestra app en *motor_django/urls.py* y llamar al método que renderizará esa vista:
 
       ```
       from mi_aplicacion import views
@@ -190,16 +195,16 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     - Esta ruta o _PATH_ recibe 4 argumentos:
       - Ruta(string): Obligatorio. Patrón URL usado para identificar la ruta indicada en la aplicación. En este caso es '', una ruta vacía, o el inicio de nuestra APP, después del nombre del servidor *http://127.0.0.1:8000/*.
-      - Vista(function): Obligatorio. Función que se llamará al cargar esa URL en la aplicación, la que debería existir en _mi_aplicacion/views.py_. En este caso llamaremos a la función _bienvenida_.
+      - Vista(function): Obligatorio. Función que se llamará al cargar esa URL en la aplicación, la que debería existir en *mi_aplicacion/views.py*. En este caso llamaremos a la función *bienvenida*.
       - Argumentos(Dictionary): Opcional. Argumentos que se enviarán a nuestra función.
-      - name(string): Opcional. Nombre que le daremos a nuestro patrón URL. En este caso lo llamaremos _'bienvenida'_ y de esa forma podemos llamarlo por nombre en la barra de navegación.
+      - name(string): Opcional. Nombre que le daremos a nuestro patrón URL. En este caso lo llamaremos *'bienvenida'* y de esa forma podemos llamarlo por nombre en la barra de navegación.
 
     - Cuando iniciemos nuevamente nuestro servidor, debiera cargar la vista recién creada en lugar de la vista Django por defecto.
 
 8.  **Página de Error 404 Genérica**
 
     - Si python NO encuentra un recurso (página) solicitado, arrojará una página de error con información del servidor, lo que involucra un serio problema de seguridad. Para evitarlo, debemos cargar un página genérica de error, lo que lograremos de la siguiente forma:
-      - Deshabilitamos el modo de pruebas de nuestra aplicación en _motor_django/settings.py_:
+      - Deshabilitamos el modo de pruebas de nuestra aplicación en *motor_django/settings.py*:
 
         ```
         DEBUG = False
@@ -212,18 +217,18 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         The requested resource was not found on this server.
         ```
 
-      - Si la aplicación NO esta corriendo en modo de prueba, implica que está en modo productivo, lo que nos debería indicar que nuestro servidor local no debería funcionar. Para resolver esto, debemos AUTORIZAR nuestro servidor local, para permitirle que funcione en modo de producción, modificando _motor_django/settings.py_:
+      - Si la aplicación NO esta corriendo en modo de prueba, implica que está en modo productivo, lo que nos debería indicar que nuestro servidor local no debería funcionar. Para resolver esto, debemos AUTORIZAR nuestro servidor local, para permitirle que funcione en modo de producción, modificando *motor_django/settings.py*:
 
         ```
         ALLOWED_HOSTS = ['localhost','127.0.0.1']
         ```
 
-      - Para que se muestre una página de error creada por nosotros, dentro del directorio _templates_ creado anteriormente, crearemos un archivo _html_ de nombre _404_. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
+      - Para que se muestre una página de error creada por nosotros, dentro del directorio *templates*, creado anteriormente, crearemos un archivo *html* de nombre *404*. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
 
 9.  **Manejo de Archivos Estáticos**
 
     Para cargar y usar tus propios archivos estáticos (CSS, JavaScript, imágenes) en Django, sigue estos pasos básicos.
-    - Asegúrate de que en tu archivo _motor_django/settings.py_ esté configurado el STATIC_URL y la ruta donde Django buscará los archivos:
+    - Asegúrate de que en tu archivo *motor_django/settings.py* esté configurado el STATIC_URL y la ruta donde Django buscará los archivos:
 
       ```
       STATIC_URL = 'static/'
